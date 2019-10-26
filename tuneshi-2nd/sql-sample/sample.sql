@@ -21,7 +21,6 @@ SELECT * FROM users;
 
 CREATE TABLE posts(
     post_id SERIAL NOT NULL,
-    user_id INT NOT NULL,
     comment VARCHAR(2000),
     date_created DATE DEFAULT Now(),
     date_updated DATE NULL,
@@ -33,4 +32,20 @@ INSERT INTO posts(comment, user_id, date_created)
 VALUES
 ('hello world do you hear ya boy', 1, '2019-10-22'),
 ('hello world do you hear ya girl', 1, '2019-10-22');
+SELECT * FROM posts;
+
+CREATE TABLE posts(
+    post_id SERIAL NOT NULL,
+    user_id INT,
+    comment VARCHAR(2000),
+    date_created DATE DEFAULT Now(),
+    date_updated DATE NULL,
+    PRIMARY KEY (post_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)    
+);
+
+INSERT INTO posts(comment)
+VALUES
+('hello world do you hear ya boy'),
+('hello world do you hear ya girl');
 SELECT * FROM posts;

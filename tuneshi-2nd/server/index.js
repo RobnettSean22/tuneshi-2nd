@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const massive = require('massive');
 // const sessions = require('express-session')
-const {readAllUsers, readUser, createUser, deleteUser} = require('./controller/controller');
+const {readAllUsers, readUser, createUser, deleteUser, updateUser, updateProfilePhoto, updateCoverPhoto, createPost, deletePost, updatePost} = require('./controller/controller');
 app.use(express.json());
 // const {SESSION_STRING} = process.env
 const {CONNECTION_STRING} = process.env;
@@ -23,6 +23,18 @@ app.get('/api/user_profile/:id' , readUser);
 app.post('/api/create_profile', createUser);
 
 app.delete('/api/delete_profile/:id', deleteUser);
+
+app.put('/api/update_profile/:id', updateUser);
+
+app.put('/api/update_profile_photo/:id', updateProfilePhoto);
+
+app.put('/api/update_cover_photo/:id', updateCoverPhoto);
+
+app.post('/api/create_post/:id', createPost)
+
+app.delete('/api/delete_post/:id', deletePost)
+
+app.put('/api/update_post/:id', updatePost)
 
 
 app.listen({port}, () => console.log(`gotchu on ${port}`));
