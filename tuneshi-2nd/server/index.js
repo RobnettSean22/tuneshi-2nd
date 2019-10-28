@@ -30,7 +30,7 @@ app.put('/api/update_profile_photo/:id', updateProfilePhoto);
 
 app.put('/api/update_cover_photo/:id', updateCoverPhoto);
 
-app.post('/api/create_post/:id', createPost)
+app.post('/api/create_post', createPost)
 
 app.delete('/api/delete_post/:id', deletePost)
 

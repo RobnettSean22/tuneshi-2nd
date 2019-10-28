@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Switch, Route, Link} from  'react-router-dom'
 import Home from './Components/Home/Home'
-import People from './Components/People/People'
+import UsersCard from './Components/UsersCard/UsersCard'
 import Profile from './Components/Profile/Profile'
 import './App.css';
 
@@ -22,8 +22,8 @@ class App extends Component {
         </header>
         <Switch>
           <Route exact path = '/' component ={Home} />
-          <Route path = '/people' component = {People} />
-          <Route path = '/profile/:tag' component = {Profile}/>
+          <Route path = '/people' component = {UsersCard} />
+          <Route path = '/profile/:id' component = {Profile}/>
         
         </Switch>
       </div>
@@ -32,3 +32,7 @@ class App extends Component {
 }
 
 export default App
+
+
+
+

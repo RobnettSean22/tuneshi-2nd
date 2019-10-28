@@ -8,8 +8,8 @@ export default class People extends Component {
         super(props)
 
         this.state = {
-            allPeople: []
-          
+            allUsers: [],
+            
 
             
         }
@@ -23,25 +23,24 @@ export default class People extends Component {
     readAllUsers(){
         axios.get(`/api/users`).then(response => {
             this.setState({
-                allPeople: response.data
+                allUsers: response.data
             })
         })
     }
 
 
-    
     render() {
-        const {allPeople} = this.state
+        const {allUsers} = this.state
         
         console.log(this.props.match.params)
-         const mapPeople = allPeople.map(people => {
+         const mapUsers = allUsers.map(user => {
             return (
 
-                <div key= {people.user_id}>
+                <div key= {user.user_id}>
                     
                     <div>
-                        <h1>{people.first_name} {people.last_name}</h1>
-                        <Link to = {`/profile/${people.user_id}`}><button className = 'to_profile'>{people.firstName} 's SHI</button></Link>
+                        <h1>{user.first_name} {user.last_name}</h1>
+                        <Link to = {`/profile/${user.user_id}`}><button className = 'to_profile'>{user.first_name} 's SHI</button></Link>
                     </div>
                 </div>
                 
@@ -51,7 +50,7 @@ export default class People extends Component {
         
         return (
             <div>
-                {mapPeople}
+                {mapUsers}
             </div>
         )
     }

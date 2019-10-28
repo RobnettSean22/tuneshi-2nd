@@ -66,11 +66,16 @@ module.exports = {
     },
 
     deletePost:(req, res, next) => {
-
+        const {comment} = req.body;
+        const {id} = req.params;
+        const db = req.app.get('db')
+        db.delete_post([id, comment]).then((posts) => res.status(200).send(posts)).catch(err => {
+            res.status(500).send({errorMessage:'post did not delete'})
+        })
     },
 
     updatePost: (req, res, next) => {
-        
+    
     }
 
 

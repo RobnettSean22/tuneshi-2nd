@@ -17,11 +17,11 @@ class Profile extends Component {
     }
      
     componentDidMount(){
-        this.getProfile(this.props.match.params.tag)
+        this.readUser(this.props.match.params.user_id)
     }
 
-    getProfile(tag){
-        axios.get(`/api/profile/${tag}`).then(response => {
+    readUser(id){
+        axios.get(`/api/user_profile/${id}`).then(response => {
             console.log(response)
             this.setState({
                 profile:response.data
@@ -74,13 +74,13 @@ class Profile extends Component {
         //post tag will be below the lastname as a props
         return (
         <div>
-            <div key={profile && profile.tag}>
+            <div key={profile && profile.user_id}>
                 <div>
                     <div className= 'cover-photo-container'>COVER PHOTO</div>
                     <div className = 'picnname-container'>
-                        <div className= 'name1st'>{profile && profile.firstName}</div>
+                        <div className= 'name1st'>{profile && profile.first_name}</div>
                         <div className = 'profile-pic'>INSERT PROFILE PIC</div>
-                        <div className = ' name2nd'>{profile && profile.lastName}</div>
+                        <div className = ' name2nd'>{profile && profile.last_name}</div>
                     </div>
                     <div>
                         <div className = 'posts-container'>
